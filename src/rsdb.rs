@@ -11,7 +11,7 @@ macro_rules! read_or_break {
         match $file.read(&mut $buf) {
             Ok(n) if n == $buf.len() => {
                 $count += n;
-            } 
+            }
             Ok(_) => {
                 break;
             }
@@ -48,7 +48,7 @@ impl RSDB {
         })
     }
     pub fn set(&mut self, key: &[u8], value: &[u8]) -> std::io::Result<()> {
-        self.log(key.clone(), value.clone())?;
+        self.log(&key.to_owned(), &value.to_owned())?;
         self.store.insert(key.to_vec(), value.to_vec());
         Ok(())
     }
@@ -70,6 +70,7 @@ impl RSDB {
     }
 }
 
+#[allow(clippy::type_complexity)]
 fn recover(path: &Path) -> std::io::Result<(File, BTreeMap<Vec<u8>, Vec<u8>>)> {
     let filename = path.join("rsdb.log");
     std::fs::create_dir_all(path)?;

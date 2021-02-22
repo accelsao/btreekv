@@ -1,8 +1,8 @@
 extern crate btreekv;
 
+use btreekv::RSDB;
 use std::path::Path;
 use std::path::PathBuf;
-use btreekv::RSDB;
 
 #[test]
 fn it_works() {
