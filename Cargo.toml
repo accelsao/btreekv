@@ -1,0 +1,16 @@
+[package]
+name = "btreekv"
+version = "0.1.0"
+authors = ["jayzhan"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "kv"
+harness = false
+
+[dependencies]
